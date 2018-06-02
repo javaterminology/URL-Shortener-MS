@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raja.urlshortener.exceptions.UnknownShortenedUrlException;
@@ -37,6 +38,7 @@ public class URLShortenerController {
     public Response resolve(@Valid @PathVariable("id") String id) throws URISyntaxException {
         try {
             final URL url = shorteningService.resolveUrl(id);
+            LOGGER.info("originalURL...."+url.toString());
             return Response.seeOther(new URI(url.toString())).build();
         } catch (UnknownShortenedUrlException e) {
             LOGGER.debug("Impossible to resolve an URL", e);
@@ -46,9 +48,11 @@ public class URLShortenerController {
 
  
     @RequestMapping(value="/",method={RequestMethod.POST},consumes={MediaType.APPLICATION_FORM_URLENCODED_VALUE},produces={MediaType.ALL_VALUE})
-    public String create(@Valid @FormParam("url") String originalUrl) {
+    public String create(@Valid @RequestParam("url") String originalUrl) {
         try {
-            return shorteningService.shortenUrl(originalUrl).toString();
+        	String shortenURL = shorteningService.shortenUrl(originalUrl).toString();
+        	LOGGER.info("shortenURL....."+shortenURL);
+            return shortenURL;
         } catch (UrlShorteningException e) {
             LOGGER.debug("Bad request", e);
             throw new WebApplicationException(e, 400);

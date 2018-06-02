@@ -17,7 +17,7 @@ import com.raja.urlshortener.mongo.collection.RegisteredUrl;
 @Service(value="shorteningService")
 public class URLShorteningService {
 
-   
+	
     protected URL baseUrl;
 
     @Autowired
@@ -49,7 +49,7 @@ public class URLShorteningService {
     }
 
     private URL buildCompleteShortenedUrl(RegisteredUrl registeredUrl) throws MalformedURLException {
-        return new URL(baseUrl.getProtocol(), baseUrl.getHost(), baseUrl.getPort(), "/" + registeredUrl.getId());
+    	 return new URL(registeredUrl.getUrl().getProtocol(), registeredUrl.getUrl().getHost(), registeredUrl.getUrl().getPort(), "/" + registeredUrl.getId());
     }
 
     public URL resolveUrl(String urlId) {
