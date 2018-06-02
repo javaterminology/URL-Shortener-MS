@@ -49,9 +49,9 @@ public class MongoDataSourceConfig extends AbstractMongoConfiguration{
 	@Bean
 	public Mongo mongo() throws Exception{
 		LOG.info("username:"+userName);
-		LOG.info("username:"+ip);
-		LOG.info("username:"+port);
-		LOG.info("username:"+database);
+		LOG.info("ip:"+ip);
+		LOG.info("port:"+port);
+		LOG.info("database:"+database);
 		MongoClient client = new MongoClient(new ServerAddress(ip,Integer.valueOf(port)),Arrays.asList(getMongoCredintial()));
 		LOG.info("MongoDB Client..."+client.getConnectPoint());
 		return client;
