@@ -1,0 +1,15 @@
+server:
+  port: 53180
+  
+spring:
+ profiles: local
+ application:
+   name: url-shortener-{spring.profiles.active}
+
+mongodb: 
+  db: terminology
+  ip: localhost
+  password: raja#1234
+  port: 27017
+  username: raja
+     
