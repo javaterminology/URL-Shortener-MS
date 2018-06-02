@@ -34,7 +34,7 @@ public class URLShortenerController {
 
    
     
-    @RequestMapping(value="{id: [a-zA-Z0-9]+}",method={RequestMethod.GET},consumes={MediaType.ALL_VALUE},produces={MediaType.ALL_VALUE})
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Response resolve(@Valid @PathVariable("id") String id) throws URISyntaxException {
         try {
             final URL url = shorteningService.resolveUrl(id);

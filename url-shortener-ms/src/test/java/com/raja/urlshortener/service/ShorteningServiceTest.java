@@ -35,7 +35,7 @@ public class ShorteningServiceTest {
     @Before
     public void setUp() throws Exception {
         service = new URLShorteningService();
-        baseUrl = new URL("https://clip.com/");
+        baseUrl = new URL("http://google.fr");
         service.baseUrl = baseUrl;
         MockitoAnnotations.initMocks(this);
     }

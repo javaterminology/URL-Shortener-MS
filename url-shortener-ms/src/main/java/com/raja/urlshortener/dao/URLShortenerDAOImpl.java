@@ -18,7 +18,8 @@ public class URLShortenerDAOImpl implements URLShortenerDAOIF{
     private MongoOperations mongoOperations;
 
     public RegisteredUrl getRegisteredUrlById(String id) {
-        Query query = new Query(Criteria.where("id").is(id));
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
         RegisteredUrl result = this.mongoOperations.findOne(query, RegisteredUrl.class);
         if (result == null) {
             throw new UnknownShortenedUrlException(id);
