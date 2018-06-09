@@ -1,6 +1,5 @@
 package com.raja.urlshortener.generator;
 
-import com.raja.urlshortener.main.URLShortenerApplication;
 import com.raja.urlshortener.utils.Base62;
 
 import org.slf4j.Logger;

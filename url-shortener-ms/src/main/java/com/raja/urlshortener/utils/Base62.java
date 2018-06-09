@@ -3,7 +3,6 @@ package com.raja.urlshortener.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.raja.urlshortener.generator.Base62TimestampUrlIdentifierGenerator;
 
 public class Base62 {
 
