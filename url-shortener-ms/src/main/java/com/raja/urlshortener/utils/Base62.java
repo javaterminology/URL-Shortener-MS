@@ -1,9 +1,15 @@
 package com.raja.urlshortener.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.raja.urlshortener.generator.Base62TimestampUrlIdentifierGenerator;
 
 public class Base62 {
 
-    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final Logger LOG = LoggerFactory.getLogger(Base62.class);
+
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";//62
 
     public static final int BASE = ALPHABET.length();
 
@@ -12,7 +18,10 @@ public class Base62 {
     public static String fromBase10(long i) {
         StringBuilder sb = new StringBuilder("");
         while (i > 0) {
+            LOG.info("fromBase10 i value before------>"+i);
             i = fromBase10(i, sb);
+            LOG.info("fromBase10 i value after------>"+i);
+
         }
         return sb.reverse().toString();
     }
