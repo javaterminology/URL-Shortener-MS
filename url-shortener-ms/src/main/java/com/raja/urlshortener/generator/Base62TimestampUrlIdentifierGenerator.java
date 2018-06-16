@@ -18,8 +18,8 @@ public class Base62TimestampUrlIdentifierGenerator implements UrlIdentifierGener
     protected AtomicInteger counter = new AtomicInteger();
     private static final Logger LOG = LoggerFactory.getLogger(Base62TimestampUrlIdentifierGenerator.class);
 
-    public String generate() {
-    	
+   public String generate() {
+	   /*
     	//anonymous class implementation
     	 final int value = counter.getAndUpdate(new IntUnaryOperator() {
  			@Override
@@ -27,12 +27,12 @@ public class Base62TimestampUrlIdentifierGenerator implements UrlIdentifierGener
  		        LOG.info("operand------>"+operand);
  				return (operand+1)%1000;
  			}
- 		});
+ 		});*/
     	
         final int counterValue = counter.getAndUpdate((operand) ->(operand + 1) % 1000);
         
       
-        final long base10Id = Long.valueOf("" + counterValue + System.currentTimeMillis());
+        final long base10Id = Long.valueOf("" + counterValue + System.currentTimeMillis());//15286 98101 894
         LOG.info("base10Id------>"+base10Id);
         
         return Base62.fromBase10(base10Id);

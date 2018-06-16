@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.validation.Valid;
-import javax.ws.rs.FormParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -24,7 +24,7 @@ import com.raja.urlshortener.exceptions.UrlShorteningException;
 import com.raja.urlshortener.service.URLShorteningService;
 
 @RestController
-@RequestMapping(value="/")
+@RequestMapping(value="/urlshortener")
 public class URLShortenerController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(URLShortenerController.class);
@@ -34,8 +34,8 @@ public class URLShortenerController {
 
    
     
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Response resolve(@Valid @PathVariable("id") String id) throws URISyntaxException {
+	@RequestMapping(value = "/get")
+    public Response resolve(@Valid @QueryParam("id") String id) throws URISyntaxException {
         try {
             final URL url = shorteningService.resolveUrl(id);
             LOGGER.info("originalURL...."+url.toString());
@@ -46,8 +46,9 @@ public class URLShortenerController {
         }
     }
 
+	//,consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE}
  
-    @RequestMapping(value="/",method={RequestMethod.POST},consumes={MediaType.APPLICATION_FORM_URLENCODED_VALUE},produces={MediaType.ALL_VALUE})
+    @RequestMapping(value="/post",method={RequestMethod.POST})
     public String create(@Valid @RequestParam("url") String originalUrl) {
         try {
         	String shortenURL = shorteningService.shortenUrl(originalUrl).toString();

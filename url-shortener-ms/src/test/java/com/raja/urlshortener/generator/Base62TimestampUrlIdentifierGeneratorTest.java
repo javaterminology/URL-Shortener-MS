@@ -25,7 +25,7 @@ public class Base62TimestampUrlIdentifierGeneratorTest {
         }
 
         // Then
-       /* assertThat(urlIds).hasSize(numberOfIds);
+      /*  assertThat(urlIds).hasSize(numberOfIds);
         assertThat(urlIds).are(new Condition<String>(s -> s.length() <= 10, "shorter than 10 characters"));
         assertThat(urlIds).are(new Condition<String>((String s) -> {
             Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");

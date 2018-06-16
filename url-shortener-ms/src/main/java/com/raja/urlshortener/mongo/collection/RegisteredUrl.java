@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.Date;
 
 
-@Document
+@Document(collection="url-shortener")
 public class RegisteredUrl {
 	
 	@Id

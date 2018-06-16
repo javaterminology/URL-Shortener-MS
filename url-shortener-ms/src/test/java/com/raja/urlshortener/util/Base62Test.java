@@ -29,12 +29,12 @@ public class Base62Test {
         int n = 0;
         String str = "6JaY2";
         char[] chars = str.toCharArray();
-        n += Base62.ALPHABET.indexOf(chars[0]) * (int) Math.pow(62, 4);
+        n += Base62.ALPHABET.indexOf(chars[0]) * (int) Math.pow(62, 4);//58*14776336=857027488
         n += Base62.ALPHABET.indexOf(chars[1]) * (int) Math.pow(62, 3);
         n += Base62.ALPHABET.indexOf(chars[2]) * (int) Math.pow(62, 2);
         n += Base62.ALPHABET.indexOf(chars[3]) * (int) Math.pow(62, 1);
         n += Base62.ALPHABET.indexOf(chars[4]) * (int) Math.pow(62, 0);
-        assertEquals(str, Base62.fromBase10(n));
+        assertEquals(str, Base62.fromBase10(n));//865372122
     }
 
     @Test
