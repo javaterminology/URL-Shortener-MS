@@ -16,7 +16,7 @@ import 'rxjs/add/operator/retry';
 
 export class AppComponent {
 
-    readonly POST_URL = "api/urlshortener";
+    readonly POST_URL = "/api/urlshortener";
 
     readonly GET_URL = "https://jsonplaceholder.typicode.com/posts";
 
